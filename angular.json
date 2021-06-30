@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "agendalive"
+    }
+  },
+  "defaultProject": "agendalive",
+  "cli": {
+    "analytics": "e7710a21-b4b8-42f3-b055-d6b7f3d16144"
+  }
 }
