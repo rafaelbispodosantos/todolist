@@ -1,29 +1,64 @@
 <h1 class="title animated tada">{{title}}</h1>
 
+
 <ul class="animated flipInX" *ngIf="mode=='lista'">
   <p class="text-center"*ngIf="todos.length==0">
     <small>
-      Não tem nenhuma tarefa hoje!
+      Não tem nenhuma medição de fluxo
     </small>
    </p>
   <li *ngFor="let todo of todos">
     {{ todo.id }}. {{ todo.title }}
-     <button *ngIf="!todo.done"(click)="markAsDone(todo)">
-       <i class="far fa-check-circle"></i>
-     </button>
-    <button *ngIf="todo.done" (click)="markAsUndone(todo)">
-      <i class="fas fa-check-circle"></i>
+    <button *ngIf="!todo.done"(click)="markAsDone(todo)">
+      <i class="far fa-check-circle"></i>
     </button>
-     <button (click)="remove(todo)"><i class="far fa-trash-alt"></i></button></li>
+   <button *ngIf="todo.done" (click)="markAsUndone(todo)">
+     <i class="fas fa-check-circle"></i>
+   </button>
+    <button (click)="remove(todo)"><i class="far fa-trash-alt"></i></button>
+    <p [ngStyle]="todo.ladoA > todo.ladoB && {  color: 'blue'}">
+      Lado A:  {{todo.ladoA}}
+    </p>
+    <p [ngStyle]="todo.ladoB > todo.ladoA && { color: 'blue' }">
+      Lado B:  {{todo.ladoB}}
+    </p>
+
+     </li>
 </ul>
 
 <div  id="modal" *ngIf="mode=='add'" class="animated flipInX">
   <form [formGroup]="form">
     <fieldset>
-      <h1 class="text-center">NOVA TAREFA</h1>
+
       <input type="text" placeholder="Titulo da Tarefa"
       maxlength="60"
       formControlName="title">
+      <small class="danger" *ngIf="form.controls.title.invalid && !form.controls.title.pristine"
+      >Este campo deve conter entre 3 e 60 caracteres<br>
+    </small>
+      <app-contagem></app-contagem>
+      <div style="display:flex; justify-content:space-evenly">
+        <p>Lado A</p>
+        <p>Lado B</p>
+
+      </div>
+      <div style="display:flex; justify-content:space-evenly; margin-top: 10px;">
+        <button style="font-size:30px" (click)="a()">
+          <i class="fas fa-angle-double-down"></i>
+         </button>
+
+         <button style="font-size:30px" (click)="b()">
+          <i class="fas fa-angle-double-up"></i>
+        </button>
+
+      </div>
+      <div style="display:flex; justify-content:space-evenly">
+        <p>Total: {{ladoA}}</p>
+        <p>Total: {{ladoB}}</p>
+
+      </div>
+
+
       <small class="danger" *ngIf="form.controls.title.invalid && !form.controls.title.pristine"
       >Este campo deve conter entre 3 e 60 caracteres<br>
     </small>
@@ -38,7 +73,7 @@
 </div>
 <button class=" add-button animated fadeInUp button" (click)="changeMode('add')"*ngIf="mode=='lista'">
   <i class="fas fa-plus-circle"></i>
-  NOVA TAREFA
+  NOVO FLUXO
 </button>
 <button class=" add-button animated fadeInUp button" (click)="changeMode('lista')"*ngIf="mode=='add'">
   <i class="fas fa-times"></i>

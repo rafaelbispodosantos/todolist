@@ -10,8 +10,12 @@ import { Todo } from './models/todo.model';
 export class AppComponent {
   public mode = 'lista';
   public todos: Todo[] = [];
-  public title: String ="Minhas Tarefas";
+  public title: String ="Meu Fluxo";
   public form: FormGroup;
+  public ladoA: number = 0;
+  public ladoB: number = 0;
+
+
 
 
    constructor(private fb: FormBuilder) {
@@ -27,15 +31,30 @@ export class AppComponent {
        }
 
 
+  a(){
+        this.ladoA = this.ladoA+1
+
+  }
+  b(){
+        this.ladoB = this.ladoB+1
+
+  }
+
   add(){
     const title = this.form.controls['title'].value;
     const id = this.todos.length + 1;
-    this.todos.push(new Todo(id, title, false));
+    const ladoA = this.ladoA;
+    const ladoB = this.ladoB;
+
+    this.todos.push(new Todo(id, title, false, ladoA, ladoB));
     this.save();
     this.clear();
+    console.log(this.todos)
   }
   clear(){
     this.form.reset();
+    this.ladoA = 0
+    this.ladoB = 0
   }
   remove(todo: Todo){
     const index = this.todos.indexOf(todo);
