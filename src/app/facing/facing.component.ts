@@ -53,11 +53,10 @@ export class FacingComponent {
 
   add() {
     const title = this.form.controls['title'].value;
-    const totalEspaco = this.form.controls['total'].value;
-    const espaco = this.form.controls['espaco'].value;
     const id = this.facing.length + 1;
-    const total = this.total
-
+    const totalEspaco = this.totalEspaco;
+    const espaco = this.espaco;
+    const total = this.total;
 
     this.facing.push(new TodoTotal(id, title, false, total, totalEspaco, espaco));
     this.save();

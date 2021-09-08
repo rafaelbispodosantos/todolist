@@ -1,4 +1,6 @@
-<h1 class="title animated tada">{{ title }}</h1>
+<div style="margin-top: 200px">
+  <h1 class="title animated tada">{{ title }}</h1>
+</div>
 
 <ul class="animated flipInX" *ngIf="mode == 'lista'">
   <p class="text-center" *ngIf="todos.length == 0">
@@ -72,10 +74,7 @@
   </form>
   <br /><br />
 </div>
-<nav>
-  <a routerLink="/fluxo" routerLinkAtive="active">Fluxo</a>
-  <a routerLink="/facing" routerLinkAtive="active">Facing</a>
-</nav>
+
 <button
   class="add-button animated fadeInUp button"
   (click)="changeMode('add')"

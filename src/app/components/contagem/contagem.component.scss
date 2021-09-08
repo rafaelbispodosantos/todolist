@@ -1,8 +1,7 @@
-
-$color-magenta: #3d49ec;
+$color-magenta: #6870e9;
 $color-white: white;
 $color-black: #0d0805;
-$color-black-light:#302f3a;
+$color-black-light: #302f3a;
 
 * {
   margin: 0;
@@ -14,7 +13,7 @@ body {
   background: linear-gradient(270deg, $color-magenta 0%, $color-white 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: 'lato';
+  font-family: "lato";
 
   display: flex;
   justify-content: center;
@@ -28,7 +27,7 @@ body {
 .content {
   background-color: $color-black;
   width: 20rem;
-  height: 18vh;
+  height: 20vh;
   margin-top: 20px;
 
   border-radius: 1rem;
@@ -39,8 +38,8 @@ body {
     .content-h,
     .content-m,
     .content-s {
-      width: 16rem;
-      height: 5rem;
+      width: 14rem;
+      height: rem;
       /* background-color: rgb(51, 12, 87); */
 
       .time {
@@ -55,7 +54,6 @@ body {
           color: $color-magenta;
         }
       }
-
     }
 
     .content-btn {
@@ -64,14 +62,13 @@ body {
 
       button {
         font-size: 1.5rem;
-        width: 1.5rem;
-        margin: 0 10px;
+        width: 1rem;
+
         border-radius: 10px;
         border: none;
 
         color: $color-magenta;
         background: $color-black;
-
       }
 
       :hover {
@@ -80,16 +77,12 @@ body {
         transform: scale(0.8);
         cursor: pointer;
       }
-
-
     }
   }
 
   .content-btn-action {
     display: flex;
     justify-content: center;
-
-
 
     button {
       font-size: 2rem;
@@ -111,10 +104,8 @@ body {
       &:disabled {
         opacity: 0.3;
       }
-
     }
   }
-
 }
 
 //----animation
@@ -123,7 +114,6 @@ body {
 }
 
 @keyframes move_timer {
-
   20%,
   50%,
   80% {
