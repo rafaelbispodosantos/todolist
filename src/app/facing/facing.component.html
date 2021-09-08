@@ -1,0 +1,95 @@
+<h1 class="title animated tada">{{ title }}</h1>
+
+<ul class="animated flipInX" *ngIf="mode == 'lista'">
+  <p class="text-center" *ngIf="facing.length == 0">
+    <small> Não tem nenhuma medição de fluxo </small>
+  </p>
+  <li *ngFor="let todo of facing">
+    {{ todo.id }}. {{ todo.title }}
+    <button *ngIf="!todo.done" (click)="markAsDone(todo)">
+      <i class="far fa-check-circle"></i>
+    </button>
+    <button *ngIf="todo.done" (click)="markAsUndone(todo)">
+      <i class="fas fa-check-circle"></i>
+    </button>
+    <button (click)="remove(todo)"><i class="far fa-trash-alt"></i></button>
+    <p [ngStyle]="todo.ladoA > todo.ladoB && { color: 'blue' }">
+      Total: {{ todo.total | number: "1.2-2" }}%
+    </p>
+  </li>
+</ul>
+
+<div id="modal" *ngIf="mode == 'add'" class="animated flipInX">
+  <form [formGroup]="form">
+    <fieldset>
+      <input
+        type="text"
+        placeholder="Titulo do facing"
+        maxlength="60"
+        formControlName="title"
+      />
+      <small
+        class="danger"
+        *ngIf="form.controls.title.invalid && !form.controls.title.pristine"
+        >Este campo deve conter entre 3 e 60 caracteres<br />
+      </small>
+
+      <div style="margin-top: 10px">
+        <input
+          type="number"
+          [(ngModel)]="totalEspaco"
+          placeholder="Espaço Total"
+          maxlength="60"
+          formControlName="total"
+        />
+      </div>
+      <div style="margin-top: 10px">
+        <input
+          type="number"
+          [(ngModel)]="espaco"
+          placeholder="Seu Espaço"
+          maxlength="60"
+          formControlName="espaco"
+        />
+      </div>
+      <div
+        style="display: flex; justify-content: space-evenly; margin-top: 10px"
+      >
+        <button style="font-size: 30px" (click)="meuEspaco()">Caucular</button>
+      </div>
+      <div style="display: flex; justify-content: space-evenly">
+        <p>Total: {{ total | number: "1.2-2" }}%</p>
+      </div>
+
+      <small
+        class="danger"
+        *ngIf="form.controls.title.invalid && !form.controls.title.pristine"
+        >Este campo deve conter entre 3 e 60 caracteres<br />
+      </small>
+      <p>
+        <button [disabled]="form.invalid" (click)="add()" class="button">
+          <i class="far fa-save"></i>
+          Salvar
+        </button>
+      </p>
+    </fieldset>
+  </form>
+  <br /><br />
+</div>
+
+<button
+  class="add-button animated fadeInUp button"
+  (click)="changeMode('add')"
+  *ngIf="mode == 'lista'"
+>
+  <i class="fas fa-plus-circle"></i>
+  NOVO FACING
+</button>
+<button
+  class="add-button animated fadeInUp button"
+  (click)="changeMode('lista')"
+  *ngIf="mode == 'add'"
+>
+  <i class="fas fa-times"></i>
+  CANCELAR
+</button>

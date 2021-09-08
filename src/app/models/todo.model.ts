@@ -9,3 +9,15 @@ export class Todo {
     public ladoB: number
   ) { }
 }
+export class TodoTotal {
+
+
+  constructor(
+    public id: Number,
+    public title: String,
+    public done: Boolean,
+    public total: number,
+    public totalEspaco: number,
+    public espaco: number,
+  ) { }
+}
