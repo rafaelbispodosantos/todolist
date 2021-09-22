@@ -2,24 +2,26 @@
   <h1 class="title animated tada">{{ title }}</h1>
 </div>
 
-<ul class="animated flipInX" *ngIf="mode == 'lista'">
-  <p class="text-center" *ngIf="facing.length == 0">
-    <small> Não tem nenhuma medição de fluxo </small>
-  </p>
-  <li *ngFor="let todo of facing">
-    {{ todo.id }}. {{ todo.title }} <br />
-    <button *ngIf="!todo.done" (click)="markAsDone(todo)">
-      <i class="far fa-check-circle"></i>
-    </button>
-    <button *ngIf="todo.done" (click)="markAsUndone(todo)">
-      <i class="fas fa-check-circle"></i>
-    </button>
-    <button (click)="remove(todo)"><i class="far fa-trash-alt"></i></button>
-    Espaço Total: {{ todo.totalEspaco }}
-    <p>Seu Espaço: {{ todo.espaco }}</p>
-    <p>Você tem: {{ todo.total | number: "1.2-2" }}% de facing</p>
-  </li>
-</ul>
+<div style="margin-top: 240px">
+  <ul class="animated flipInX" *ngIf="mode == 'lista'">
+    <p class="text-center" *ngIf="facing.length == 0">
+      <small> Não tem nenhuma medição de fluxo </small>
+    </p>
+    <li *ngFor="let todo of facing">
+      {{ todo.id }}. {{ todo.title }} <br />
+      <button *ngIf="!todo.done" (click)="markAsDone(todo)">
+        <i class="far fa-check-circle"></i>
+      </button>
+      <button *ngIf="todo.done" (click)="markAsUndone(todo)">
+        <i class="fas fa-check-circle"></i>
+      </button>
+      <button (click)="remove(todo)"><i class="far fa-trash-alt"></i></button>
+      Espaço Total: {{ todo.totalEspaco }}
+      <p>Seu Espaço: {{ todo.espaco }}</p>
+      <p>Você tem: {{ todo.total | number: "1.2-2" }}% de facing</p>
+    </li>
+  </ul>
+</div>
 
 <div id="modal" *ngIf="mode == 'add'" class="animated flipInX">
   <form [formGroup]="form">

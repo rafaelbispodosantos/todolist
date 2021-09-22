@@ -7,7 +7,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 export class ContagemComponent implements OnInit {
 
 
-  public minutes: number = 0;
+  public minutes: number = 6;
   public seconds: number = 0;
   private timer: any;
   private date = new Date();
@@ -22,7 +22,7 @@ export class ContagemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  increment(type:  'M' | 'S') {
+  increment(type: 'M' | 'S') {
 
     if (type === 'M') {
       if (this.minutes >= 59) return;
@@ -85,7 +85,7 @@ export class ContagemComponent implements OnInit {
       this.show = false;  //hide btn + and -
       this.updateTimer();
 
-      if(this.seconds > 0){
+      if (this.seconds > 0) {
         this.timer = setInterval(() => {
           this.updateTimer();
         }, 1000);
@@ -102,7 +102,7 @@ export class ContagemComponent implements OnInit {
   }
 
   reset() {
-    this.minutes = 0;
+    this.minutes = 6;
     this.seconds = 0;
     this.stop();
   }

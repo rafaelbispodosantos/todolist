@@ -2,17 +2,11 @@
   <div class="content-timer">
     <div class="content-m">
       <div class="time">{{ minutes | number: "2.0" }} <span>m</span></div>
-      <div class="content-btn" *ngIf="show">
-        <button (click)="increment('M')">+</button>
-        <button (click)="decrement('M')">-</button>
-      </div>
+      <div class="content-btn" *ngIf="show"></div>
     </div>
     <div class="content-s">
       <div class="time">{{ seconds | number: "2.0" }} <span>s</span></div>
-      <div class="content-btn" *ngIf="show">
-        <button (click)="increment('S')">+</button>
-        <button (click)="decrement('S')">-</button>
-      </div>
+      <div class="content-btn" *ngIf="show"></div>
     </div>
   </div>
   <div class="content-btn-action">
