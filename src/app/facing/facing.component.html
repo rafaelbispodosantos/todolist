@@ -1,8 +1,8 @@
-<div style="margin-top: 200px">
+<div style="margin-top: 100px">
   <h1 class="title animated tada">{{ title }}</h1>
 </div>
 
-<div style="margin-top: 240px">
+<div style="margin-top: 40px">
   <ul class="animated flipInX" *ngIf="mode == 'lista'">
     <p class="text-center" *ngIf="facing.length == 0">
       <small> Não tem nenhuma medição de fluxo </small>
@@ -18,7 +18,7 @@
       <button (click)="remove(todo)"><i class="far fa-trash-alt"></i></button>
       Espaço Total: {{ todo.totalEspaco }}
       <p>Seu Espaço: {{ todo.espaco }}</p>
-      <p>Você tem: {{ todo.total | number: "1.2-2" }}% de facing</p>
+      <p>Você tem: {{ todo.total | number : "1.2-2" }}% de facing</p>
     </li>
   </ul>
 </div>
@@ -73,7 +73,7 @@
         </button>
       </div>
       <div style="display: flex; justify-content: space-evenly">
-        <p>Total: {{ total | number: "1.2-2" }}%</p>
+        <p>Total: {{ total | number : "1.2-2" }}%</p>
       </div>
 
       <small
